@@ -100,12 +100,18 @@ Example: ::
 
 Changelog
 =========
+0.8.3
+-------
+
+- Compatibility with ``Django>=3.0``.
+- Drop support for Python 2.
+
 
 0.8.2.4
 -------
 
-Fixed compatibility with ``Django>=2.0``.
-Based on: https://github.com/emencia/emencia-cmsplugin-zinnia/commit/527061e71e6978ca96e53f01bb3a72607eab827e
+- Compatibility with ``Django>=2.0``.
+  Based on: https://github.com/emencia/emencia-cmsplugin-zinnia/commit/527061e71e6978ca96e53f01bb3a72607eab827e
 
 
 0.8.2

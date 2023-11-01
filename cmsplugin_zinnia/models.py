@@ -1,8 +1,6 @@
 """Models of Zinnia CMS Plugins"""
 from django.db import models
-from django.utils import six
 from django.utils.translation import ugettext_lazy as _
-from django.utils.encoding import python_2_unicode_compatible
 
 from cms.models.pluginmodel import CMSPlugin
 
@@ -15,13 +13,12 @@ TEMPLATES = [
     + PLUGINS_TEMPLATES
 
 
-@python_2_unicode_compatible
 class LatestEntriesPlugin(CMSPlugin):
     """
     CMS Plugin for displaying latest entries
     """
 
-    featured = models.NullBooleanField(
+    featured = models.BooleanField(
         _('featured'),
         blank=True, null=True,
         choices=((True, _('Show featured entries only')),
@@ -70,7 +67,6 @@ class LatestEntriesPlugin(CMSPlugin):
         return _('%s entries') % self.number_of_entries
 
 
-@python_2_unicode_compatible
 class SelectedEntriesPlugin(CMSPlugin):
     """
     CMS Plugin for displaying custom entries
@@ -101,7 +97,6 @@ class SelectedEntriesPlugin(CMSPlugin):
         return _('%s entries') % self.entries.count()
 
 
-@python_2_unicode_compatible
 class RandomEntriesPlugin(CMSPlugin):
     """
     CMS Plugin for displaying random entries
@@ -118,7 +113,6 @@ class RandomEntriesPlugin(CMSPlugin):
         return _('%s entries') % self.number_of_entries
 
 
-@python_2_unicode_compatible
 class QueryEntriesPlugin(CMSPlugin):
     """
     CMS Plugin for displaying entries
@@ -151,7 +145,6 @@ class QueryEntriesPlugin(CMSPlugin):
         return _('%s entries') % self.number_of_entries
 
 
-@python_2_unicode_compatible
 class CalendarEntriesPlugin(CMSPlugin):
     """
     CMS Plugin for displaying a calendar with
@@ -162,7 +155,7 @@ class CalendarEntriesPlugin(CMSPlugin):
     month = models.PositiveIntegerField(_('month'), null=True, blank=True)
 
     def __str__(self):
-        name = six.text_type(_('Calendar entries'))
+        name = _('Calendar entries')
         if self.year:
             name = '%s: %s/%s' % (name, self.year, self.month)
         return name
