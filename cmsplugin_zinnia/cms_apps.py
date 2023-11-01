@@ -32,4 +32,8 @@ class ZinniaApphook(CMSApp):
     menus = app_menus
     app_name = 'zinnia'
 
+    def get_urls(self, page=None, language=None, **kwargs):
+        return APP_URLS
+
+
 apphook_pool.register(ZinniaApphook)
